@@ -14,9 +14,18 @@
             width: 300px;
             margin: 0 auto;
         }
-        input, button {
+        input {
             margin: 10px;
             padding: 10px;
+            font-size: 1rem;
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        button {
+            padding: 10px 20px;
             font-size: 1rem;
         }
         .result {
@@ -41,9 +50,14 @@
 
         <div id="question">A × B = ?</div>
         <input type="number" id="answer" placeholder="答えを入力">
-        <button onclick="submitAnswer()">送信</button>
+
+        <!-- ボタンを水平に並べるためのコンテナ -->
+        <div class="button-container">
+            <button onclick="submitAnswer()">送信</button>
+            <button onclick="nextQuestion()">次</button>
+        </div>
+
         <div id="result" class="result"></div>
-        <button onclick="nextQuestion()">次</button>
         <div id="time" class="result"></div>
     </div>
 
