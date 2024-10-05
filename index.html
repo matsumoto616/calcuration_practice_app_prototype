@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九九の練習アプリ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 1rem;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>九九の練習</h1>
+        <div id="question">A × B = ?</div>
+        <input type="number" id="answer" placeholder="答えを入力">
+        <button onclick="submitAnswer()">送信</button>
+        <div id="result" class="result"></div>
+        <button onclick="nextQuestion()">次</button>
+        <div id="time" class="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
