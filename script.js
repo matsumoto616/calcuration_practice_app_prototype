@@ -44,7 +44,7 @@ function submitAnswer() {
         if (answer === a * b) {
             document.getElementById('result').innerText = '正解！';
         } else {
-            document.getElementById('result').innerText = '不正解。';
+            document.getElementById('result').innerText = `不正解... 正解は ${a*b}`;
         }
     } else if (mode === "division") {
         // 割り算モードの判定
@@ -52,14 +52,14 @@ function submitAnswer() {
         if (answer === b) {
             document.getElementById('result').innerText = '正解！';
         } else {
-            document.getElementById('result').innerText = '不正解。';
+            document.getElementById('result').innerText = `不正解... 正解は ${b}`;
         }
     } else if (mode === "addition") {
         // 足し算モードの判定
         if (answer === a + b) {
             document.getElementById('result').innerText = '正解！';
         } else {
-            document.getElementById('result').innerText = '不正解。';
+            document.getElementById('result').innerText = `不正解... 正解は ${a+b}`;
         }
     }
     
