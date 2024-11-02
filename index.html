@@ -14,7 +14,7 @@
             width: 300px;
             margin: 0 auto;
         }
-        input {
+        input, select {
             margin: 10px;
             padding: 10px;
             font-size: 1rem;
@@ -36,16 +36,16 @@
 </head>
 <body>
     <div class="container">
-        <h1>九九の練習</h1>
+        <h1>計算練習</h1>
 
-        <!-- ラジオボタンでモードを切り替える -->
+        <!-- ドロップダウンでモードを切り替える -->
         <div>
-            <label>
-                <input type="radio" name="mode" value="multiplication" checked onclick="generateQuestion()"> 掛け算モード
-            </label>
-            <label>
-                <input type="radio" name="mode" value="division" onclick="generateQuestion()"> 割り算モード
-            </label>
+            <label for="mode">モード選択:</label>
+            <select id="mode" onchange="generateQuestion()">
+                <option value="addition">足し算モード</option>
+                <option value="multiplication">掛け算モード</option>
+                <option value="division">割り算モード</option>
+            </select>
         </div>
 
         <div id="question">A × B = ?</div>
