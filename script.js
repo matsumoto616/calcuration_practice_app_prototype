@@ -30,6 +30,16 @@ function generateQuestion() {
         const formattedB = b < 0 ? `(${b})` : b;
 
         document.getElementById('question').innerText = `${formattedA} + ${formattedB} = ?`;
+    } else if (mode === "substraction") {
+        // 引き算モード（正または負の整数）
+        a = Math.floor(Math.random() * 19) - 9; // -9 から 9 の範囲でランダム生成
+        b = Math.floor(Math.random() * 19) - 9; // -9 から 9 の範囲でランダム生成
+
+        // a または b が負の場合に括弧で囲む
+        const formattedA = a < 0 ? `(${a})` : a;
+        const formattedB = b < 0 ? `(${b})` : b;
+
+        document.getElementById('question').innerText = `${formattedA} - ${formattedB} = ?`;
     }
 }
 
@@ -60,6 +70,13 @@ function submitAnswer() {
             document.getElementById('result').innerText = '正解！';
         } else {
             document.getElementById('result').innerText = `不正解... 正解は ${a+b}`;
+        }
+    } else if (mode === "substraction") {
+        // 足し算モードの判定
+        if (answer === a - b) {
+            document.getElementById('result').innerText = '正解！';
+        } else {
+            document.getElementById('result').innerText = `不正解... 正解は ${a-b}`;
         }
     }
     
