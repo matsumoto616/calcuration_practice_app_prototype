@@ -6,8 +6,6 @@ function getSelectedMode() {
 
 function generateQuestion() {
     const mode = getSelectedMode();  // ドロップダウンからモードを取得
-    a = Math.floor(Math.random() * 9) + 1;
-    b = Math.floor(Math.random() * 9) + 1;
     document.getElementById('result').innerText = '';
     document.getElementById('time').innerText = '';
     document.getElementById('answer').value = '';
@@ -15,11 +13,26 @@ function generateQuestion() {
 
     if (mode === "multiplication") {
         // 掛け算モード
-        document.getElementById('question').innerText = `${a} × ${b} = ?`;
+        a = Math.floor(Math.random() * 19) - 9; // -9 から 9 の範囲でランダム生成
+        b = Math.floor(Math.random() * 19) - 9; // -9 から 9 の範囲でランダム生成
+
+        // a または b が負の場合に括弧で囲む
+        const formattedA = a < 0 ? `(${a})` : a;
+        const formattedB = b < 0 ? `(${b})` : b;
+        document.getElementById('question').innerText = `${formattedA} × ${formattedB} = ?`;
     } else if (mode === "division") {
         // 割り算モード（aとbを掛けて、その結果を出題する）
+        a = Math.floor(Math.random() * 19) - 9; // -9 から 9 の範囲でランダム生成
+        b = Math.floor(Math.random() * 19) - 9; // -9 から 9 の範囲でランダム生成
+        if (a === 0) {
+            a = 1;
+        }
         const product = a * b;
-        document.getElementById('question').innerText = `${product} ÷ ${a} = ?`;
+
+        // a または product が負の場合に括弧で囲む
+        const formattedA = a < 0 ? `(${a})` : a;
+        const formattedP = product < 0 ? `(${product})` : product;
+        document.getElementById('question').innerText = `${formattedP} ÷ ${formattedA} = ?`;
     } else if (mode === "addition") {
         // 足し算モード（正または負の整数）
         a = Math.floor(Math.random() * 19) - 9; // -9 から 9 の範囲でランダム生成
