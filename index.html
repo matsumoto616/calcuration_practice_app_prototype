@@ -48,6 +48,13 @@
                 <option value="division">割り算モード</option>
             </select>
         </div>
+        <div>
+            <label for="numberRange">範囲選択:</label>
+            <select id="numberRange" onchange="generateQuestion()">
+                <option value="natural">自然数</option>
+                <option value="integer">整数</option>
+            </select>
+        </div>
 
         <div id="question">A × B = ?</div>
         <input type="number" id="answer" placeholder="答えを入力">
