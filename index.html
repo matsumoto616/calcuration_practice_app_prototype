@@ -4,44 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>計算練習アプリ</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-        }
-        .container {
-            width: 300px;
-            margin: 0 auto;
-        }
-        input, select {
-            margin: 10px;
-            padding: 10px;
-            font-size: 1rem;
-        }
-        .button-container {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 1rem;
-        }
-        .result {
-            margin-top: 20px;
-            font-weight: bold;
-        }
-        .fraction {
-            font-size: 1.2rem;
-        }
-    </style>
+    <!-- 外部CSSファイルをリンク -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body onload="generateQuestion()">
     <div class="container">
         <h1>計算練習</h1>
 
-        <!-- ドロップダウンでモードを切り替える -->
         <div>
             <label for="mode">モード選択:</label>
             <select id="mode" onchange="generateQuestion()">
@@ -61,10 +30,9 @@
         </div>
 
         <div id="question">A × B = ?</div>
-        <!-- 分数入力を考慮して type を text に変更 -->
+
         <input type="text" id="answer" placeholder="答えを入力 (例: 3/4)">
 
-        <!-- ボタンを水平に並べるためのコンテナ -->
         <div class="button-container">
             <button onclick="submitAnswer()">送信</button>
             <button onclick="generateQuestion()">次</button>
