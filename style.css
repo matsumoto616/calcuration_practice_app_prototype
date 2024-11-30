@@ -34,8 +34,8 @@ label {
 }
 
 select, input {
-    width: 100%; /* 幅を画面幅に適応 */
-    padding: 10px;
+    width: 100%; /* 親要素の幅に収まる */
+    padding: 12px; /* 統一された内側の余白 */
     margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
@@ -117,7 +117,7 @@ button:active {
 
     select, input {
         font-size: 0.9rem;
-        padding: 8px;
+        padding: 10px; /* モバイルでの表示に適した内側余白 */
     }
 
     button {
