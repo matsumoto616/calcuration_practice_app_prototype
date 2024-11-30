@@ -32,9 +32,12 @@
             margin-top: 20px;
             font-weight: bold;
         }
+        .fraction {
+            font-size: 1.2rem;
+        }
     </style>
 </head>
-<body>
+<body onload="generateQuestion()">
     <div class="container">
         <h1>計算練習</h1>
 
@@ -51,18 +54,20 @@
         <div>
             <label for="numberRange">範囲選択:</label>
             <select id="numberRange" onchange="generateQuestion()">
-                <option value="natural">自然数</option>
+                <option value="nonNegative">非負整数</option>
                 <option value="integer">整数</option>
+                <option value="rational">有理数</option>
             </select>
         </div>
 
         <div id="question">A × B = ?</div>
-        <input type="number" id="answer" placeholder="答えを入力">
+        <!-- 分数入力を考慮して type を text に変更 -->
+        <input type="text" id="answer" placeholder="答えを入力 (例: 3/4)">
 
         <!-- ボタンを水平に並べるためのコンテナ -->
         <div class="button-container">
             <button onclick="submitAnswer()">送信</button>
-            <button onclick="nextQuestion()">次</button>
+            <button onclick="generateQuestion()">次</button>
         </div>
 
         <div id="result" class="result"></div>
