@@ -6,6 +6,7 @@ body {
     text-align: center;
     margin: 0;
     padding: 20px;
+    box-sizing: border-box; /* 幅計算の一貫性を保つ */
 }
 
 .container {
@@ -13,8 +14,10 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px 30px;
-    width: 350px;
+    width: 100%;
+    max-width: 350px; /* 最大幅を設定 */
     margin: 20px auto;
+    box-sizing: border-box;
 }
 
 h1 {
@@ -31,13 +34,14 @@ label {
 }
 
 select, input {
-    width: 100%;
+    width: 100%; /* 幅を画面幅に適応 */
     padding: 10px;
     margin-bottom: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 1rem;
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* 幅計算を正確にする */
 }
 
 select:focus, input:focus {
@@ -48,8 +52,9 @@ select:focus, input:focus {
 
 .button-container {
     display: flex;
+    flex-wrap: wrap; /* ボタンが狭い画面で折り返せるように */
     justify-content: center;
-    gap: 15px;
+    gap: 10px;
     margin-top: 10px;
 }
 
@@ -62,6 +67,8 @@ button {
     font-size: 1rem;
     cursor: pointer;
     transition: background 0.3s, transform 0.2s;
+    width: 100%; /* デフォルトでは幅を100%に */
+    max-width: 150px; /* ボタンの最大幅を設定 */
 }
 
 button:hover {
@@ -92,4 +99,33 @@ button:active {
 
 .fraction {
     font-size: 1.2rem;
+}
+
+/* メディアクエリ（レスポンシブ対応） */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    select, input {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    button {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+    }
+
+    #question {
+        font-size: 1.2rem;
+    }
 }
