@@ -31,7 +31,7 @@ function removeParentheses(str) {
 // 分数を整形する関数（分母が1のとき整数にする、負の数のとき(－(分数))の形にする）
 function formatFraction(fraction) {
     const { numerator, denominator } = fraction;
-    const isNegative = numerator < 0 || denominator < 0;
+    const isNegative = numerator * denominator < 0;
     const isInteger = denominator === 1 || denominator === -1;
     const formattedNumerator = numerator < 0 ? -numerator : numerator;
     const formattedDenominator = denominator < 0 ? -denominator : denominator;
