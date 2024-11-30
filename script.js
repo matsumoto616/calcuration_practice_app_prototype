@@ -32,7 +32,7 @@ function removeParentheses(str) {
 function formatFraction(fraction) {
     const { numerator, denominator } = fraction;
     const isNegative = numerator < 0 || denominator < 0;
-    const isInteger = denominator === 1;
+    const isInteger = denominator === 1 || denominator === -1;
     const formattedNumerator = numerator < 0 ? -numerator : numerator;
     const formattedDenominator = denominator < 0 ? -denominator : denominator;
     const formattedFraction = `${formattedNumerator}/${formattedDenominator}`;
