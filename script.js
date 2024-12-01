@@ -101,7 +101,8 @@ function generateQuestion() {
         } else if (mode === "addition") {
             document.getElementById('question').innerText = `${a} + ${wrapNegative(b.toString())} = ?`;
         } else if (mode === "substraction") {
-            document.getElementById('question').innerText = `${a} - ${wrapNegative(b.toString())} = ?`;
+            const sum = a + b;
+            document.getElementById('question').innerText = `${sum} - ${wrapNegative(a.toString())} = ?`;
         }
     }
 }
@@ -181,7 +182,7 @@ function submitAnswer() {
         } else if (mode === "addition") {
             correctAnswer = a + b;
         } else if (mode === "substraction") {
-            correctAnswer = a - b;
+            correctAnswer = b;
         }
 
         if (parseInt(answer, 10) === correctAnswer) {
