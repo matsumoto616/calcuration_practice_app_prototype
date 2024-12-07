@@ -6,6 +6,9 @@
     <title>計算練習アプリ</title>
     <!-- 外部CSSファイルをリンク -->
     <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" id="MathJax-script" async
+        src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
 </head>
 <body onload="generateQuestion()">
     <div class="container">
@@ -29,9 +32,9 @@
             </select>
         </div>
 
-        <div id="question">A × B = ?</div>
+        <div id="question">$$ A \times B = $$</div>
 
-        <input type="text" id="answer" placeholder="答えを入力 (例: 3/4)">
+        <input type="text" id="answer" placeholder="答えを入力 (例: -3/4)">
 
         <div class="button-container">
             <button onclick="submitAnswer()">送信</button>

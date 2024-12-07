@@ -35,12 +35,12 @@ function formatFraction(fraction) {
     const isInteger = denominator === 1 || denominator === -1;
     const formattedNumerator = numerator < 0 ? -numerator : numerator;
     const formattedDenominator = denominator < 0 ? -denominator : denominator;
-    const formattedFraction = `${formattedNumerator}/${formattedDenominator}`;
+    const formattedFraction = `\\frac{${formattedNumerator}}{${formattedDenominator}}`;
     let ret;
     if (isNegative && isInteger) {
         ret = `-${formattedNumerator}`;
     } else if (isNegative && !isInteger) {
-        ret = `-(${formattedFraction})`;
+        ret = `-${formattedFraction}`;
     } else if (!isNegative && isInteger) {
         ret = `${formattedNumerator}`;
     } else if (!isNegative && !isInteger) {
@@ -52,7 +52,7 @@ function formatFraction(fraction) {
 // 負の数のとき()をつける
 function wrapNegative(strTerm) {
     if (strTerm.startsWith("-")) {
-        return `(${strTerm})`;
+        return `\\left(${strTerm}\\right)`;
     }
     return strTerm;
 }
@@ -77,13 +77,13 @@ function generateQuestion() {
 
         // 問題文の生成
         if (mode === "multiplication") {
-            document.getElementById('question').innerText = `${formatFraction(a)} × ${wrapNegative(formatFraction(b))} = ?`;
+            document.getElementById('question').innerText = `$$${formatFraction(a)} \\times ${wrapNegative(formatFraction(b))} = $$`;
         } else if (mode === "division") {
-            document.getElementById('question').innerText = `${formatFraction(a)} ÷ ${wrapNegative(formatFraction(b))} = ?`;
+            document.getElementById('question').innerText = `$$${formatFraction(a)} \\div ${wrapNegative(formatFraction(b))} = $$`;
         } else if (mode === "addition") {
-            document.getElementById('question').innerText = `${formatFraction(a)} + ${wrapNegative(formatFraction(b))} = ?`;
+            document.getElementById('question').innerText = `$$${formatFraction(a)} + ${wrapNegative(formatFraction(b))} = $$`;
         } else if (mode === "substraction") {
-            document.getElementById('question').innerText = `${formatFraction(a)} - ${wrapNegative(formatFraction(b))} = ?`;
+            document.getElementById('question').innerText = `$$${formatFraction(a)} - ${wrapNegative(formatFraction(b))} = $$`;
         }
     } else {
         const range = rangeType === "nonNegative" ? 99 : 199;
@@ -93,18 +93,19 @@ function generateQuestion() {
         b = Math.floor(Math.random() * (range + 1)) + offset;
 
         if (mode === "multiplication") {
-            document.getElementById('question').innerText = `${a} × ${wrapNegative(b.toString())} = ?`;
+            document.getElementById('question').innerText = `$$ ${a} \\times ${wrapNegative(b.toString())} = $$`;
         } else if (mode === "division") {
             if (a === 0) a = 1;
             const product = a * b;
-            document.getElementById('question').innerText = `${product} ÷ ${wrapNegative(a.toString())} = ?`;
+            document.getElementById('question').innerText = `$$ ${product} \\div ${wrapNegative(a.toString())} = $$`;
         } else if (mode === "addition") {
-            document.getElementById('question').innerText = `${a} + ${wrapNegative(b.toString())} = ?`;
+            document.getElementById('question').innerText = `$$ ${a} + ${wrapNegative(b.toString())} = $$`;
         } else if (mode === "substraction") {
             const sum = a + b;
-            document.getElementById('question').innerText = `${sum} - ${wrapNegative(a.toString())} = ?`;
+            document.getElementById('question').innerText = `$$ ${sum} - ${wrapNegative(a.toString())} = $$`;
         }
     }
+    MathJax.typeset();
 }
 
 function parseFraction(input) {
@@ -172,7 +173,7 @@ function submitAnswer() {
         if (parsedAnswer && areFractionsEqual(correctAnswer, parsedAnswer) && isReducedFraction(parsedAnswer)) {
             document.getElementById('result').innerText = '正解！';
         } else {
-            document.getElementById('result').innerText = `不正解... 正解は ${formatFraction(correctAnswer)}`;
+            document.getElementById('result').innerText = `不正解... 正解は \\( ${formatFraction(correctAnswer)} \\)`;
         }
     } else {
         if (mode === "multiplication") {
@@ -188,9 +189,10 @@ function submitAnswer() {
         if (parseInt(answer, 10) === correctAnswer) {
             document.getElementById('result').innerText = '正解！';
         } else {
-            document.getElementById('result').innerText = `不正解... 正解は ${correctAnswer}`;
+            document.getElementById('result').innerText = `不正解... 正解は \\( ${correctAnswer} \\)`;
         }
     }
 
     document.getElementById('time').innerText = `回答時間: ${timeTaken}秒`;
+    MathJax.typeset();
 }
