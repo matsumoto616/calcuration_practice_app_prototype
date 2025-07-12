@@ -58,12 +58,16 @@ function wrapNegative(strTerm) {
 }
 
 function generateQuestion() {
-    const mode = getSelectedMode();
+    mode = getSelectedMode();
     const rangeType = getNumberRange();
     document.getElementById('result').innerText = '';
     document.getElementById('time').innerText = '';
     document.getElementById('answer').value = '';
     startTime = new Date();
+
+    if (mode === "all") {
+        mode = Math.random(["multiplication", "division", "addition", "substraction"])
+    }
 
     if (rangeType === "rational") {
         const numerator1 = Math.floor(Math.random() * 21) - 10;
