@@ -66,7 +66,8 @@ function generateQuestion() {
     startTime = new Date();
 
     if (mode === "all") {
-        mode = Math.random(["multiplication", "division", "addition", "substraction"])
+        const modes = ["multiplication", "division", "addition", "substraction"];
+        mode = modes[Math.floor(Math.random() * modes.length)];
     }
 
     if (rangeType === "rational") {
@@ -145,7 +146,11 @@ function submitAnswer() {
     const answer = document.getElementById('answer').value.trim();
     endTime = new Date();
     const timeTaken = ((endTime - startTime) / 1000).toFixed(2);
-    const mode = getSelectedMode();
+    let mode = getSelectedMode();
+    if (mode === "all") {
+        const modes = ["multiplication", "division", "addition", "substraction"];
+        mode = modes[Math.floor(Math.random() * modes.length)];
+    }
     const rangeType = getNumberRange();
 
     let correctAnswer;
